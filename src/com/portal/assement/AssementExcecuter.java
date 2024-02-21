@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.portal.assement.concret.User;
 import com.portal.assement.controller.UserController;
+import com.portal.assement.services.AssementQuestions;
 
 public class AssementExcecuter {
 	public static void main(String[] args) {
@@ -15,7 +16,9 @@ public class AssementExcecuter {
 			switch(sc.nextInt()) {
 			case 1 :
 				CurrentUser = userController.UserLogIn(sc);
-				
+				AssementQuestions ques = new AssementQuestions();
+				int score = ques.Assessment();
+				CurrentUser.setAssementMark(score);
 				break;
 			case 2:
 				userController.userRegister(sc);
